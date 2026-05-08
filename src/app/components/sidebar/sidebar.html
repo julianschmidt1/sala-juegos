@@ -1,0 +1,38 @@
+<p-drawer class="custom-sidebar" [(visible)]="isVisible">
+    <ng-template pTemplate="headless">
+        <div class="sidebar-content">
+
+            <div class="sidebar-header">
+                <img src="icon-profile.svg" alt="Profile icon">
+                <h3 class="user-name">
+                    {{username}}
+                </h3>
+            </div>
+
+            <div class="sidebar-actions">
+                <div class="sidebar-navigation-options">
+
+                    @for (item of navigationOptions; track item.title) {
+                    <a class="option navigation" routerLinkActive="active" [routerLink]="item.navigateTo">
+
+                        {{ item.title }}
+
+                    </a>
+                    }
+
+                </div>
+
+                <div (click)="handleLogout()" class="option logout">
+                    Cerrar sesión
+                </div>
+            </div>
+
+        </div>
+    </ng-template>
+</p-drawer>
+<div class="head-toggle">
+    <div class="logo-row">
+        <span (click)="isVisible.set(true)" class="pi pi-bars toggle-icon"></span>
+        <span class="title">GamesRoom</span>
+    </div>
+</div>

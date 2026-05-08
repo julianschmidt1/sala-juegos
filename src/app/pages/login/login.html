@@ -1,0 +1,26 @@
+<div class="screen">
+    <div class="login-layout">
+
+        <div class="logo-container">
+            <img src="icon-full.svg" alt="GamesRoom Icon">
+        </div>
+
+        <form class="credentials">
+            <h1 class="login-title">Games Room</h1>
+
+            <label>Correo electrónico</label>
+            <input type="text" name="email" pInputText autocomplete="off" [(ngModel)]="user.email" />
+
+            <label>Contraseña</label>
+            <input type="password" name="password" pInputText [(ngModel)]="user.password" />
+
+            <div class="action-buttons">
+                <a routerLink="/register" style="margin-right: auto;">Crear cuenta</a>
+
+                <button class="custom-button admin-effect" (click)="setAdminCredentials()">¡SOY ADMIN!</button>
+                <button class="custom-button" (click)="handleLogin()">Ingresar</button>
+            </div>
+        </form>
+
+    </div>
+</div>

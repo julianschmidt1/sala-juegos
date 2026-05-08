@@ -1,0 +1,101 @@
+@use '../sidebar/../../../styles/colors.scss' as *;
+@use '../sidebar/../../../styles/mixins.scss' as *;
+
+.custom-sidebar {
+    .sidebar-content {
+        @include display-flex();
+        @include flex-direction(column);
+
+        padding: 20px;
+        overflow-y: auto;
+        background-color: $background-2;
+        height: 100%;
+
+        .sidebar-header {
+            @include center-content();
+            @include flex-direction(column);
+
+            img {
+                height: 90px;
+                width: 90px;
+            }
+
+            .user-name {
+                color: $text-color-1;
+            }
+        }
+
+        .option {
+            transition: 0.2s ease-in;
+            padding: 12px;
+            margin: 4px;
+            border-radius: 8px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+
+        .sidebar-actions {
+            @include display-flex();
+            @include flex-direction(column);
+            @include justify-content(space-between);
+            height: max-content !important;
+            flex: 1;
+
+            .sidebar-navigation-options {
+                @include display-flex();
+                @include flex-direction(column);
+
+                .navigation {
+                    color: $text-color-1;
+
+                    &:hover {
+                        color: $base-black;
+                        background-color: $primary-color-1;
+                    }
+                }
+
+                .active {
+                    background-color: $primary-color-1;
+                    color: $base-black;
+                }
+
+            }
+
+            .logout {
+                color: $danger-color-1;
+                border: 1px solid $danger-color-1;
+
+                &:hover {
+                    color: $base-black;
+                    background-color: $danger-color-1;
+                }
+            }
+        }
+    }
+}
+
+.head-toggle {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    background-color: $primary-color-1;
+    padding: 20px;
+    color: $primary-color-3;
+
+    .logo-row {
+        @include display-flex();
+        @include align-items(center);
+
+        .toggle-icon {
+            font-size: 20px;
+            margin-right: 16px;
+            cursor: pointer;
+        }
+
+        .title {
+            font-size: 22px;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+@use '../../../styles/colors.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+@use '../../../styles/sizes.scss' as *;
+
+
+.page-content {
+    overflow: auto;
+
+    .title {
+        color: $text-color-1;
+        margin-left: 50px
+    }
+
+    .games-section {
+        @include display-flex();
+        @include justify-content(center);
+        width: 100%;
+        padding: 0px 20px;
+        gap: 30px;
+        flex-wrap: wrap;
+
+        .game-card {
+            @include center-content();
+            min-width: 290px;
+            min-height: 175px;
+            background-color: $primary-color-1;
+            border-radius: 8px;
+            border: 3px solid $primary-color-1;
+            cursor: pointer;
+            background-position: center;
+            background-size: cover;
+            transition: 0.3s;
+
+            span {
+                background-color: $primary-color-1;
+                margin-bottom: auto;
+                padding: 5px;
+                color: $primary-color-3;
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+            }
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
+}

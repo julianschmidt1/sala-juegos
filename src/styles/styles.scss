@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+
+@use 'primeicons/primeicons.css';
+@use 'colors.scss' as *;
+@use 'mixins.scss' as *;
+
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    background-color: $background-1;
+}
+
+* {
+    font-family: system-ui;
+}
+
+.page-content {
+    height: 100%;
+    width: 100%;
+    padding-top: 65px;
+}
+
+
+.custom-button {
+    padding: 8px;
+    text-transform: uppercase;
+    box-shadow: none;
+    background-color: $primary-color-1;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    color: $base-white;
+}
+
+input {
+    padding: 5px;
+
+    &:focus {
+        box-shadow: 0 0 0 0.2rem $primary-color-1;
+        border-color: none;
+    }
+}
+
+label {
+    color: $base-white;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: $background-1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $primary-color-1;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: $primary-color-2;
+}
