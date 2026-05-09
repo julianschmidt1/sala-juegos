@@ -27,7 +27,7 @@ export class SidebarComponent {
   }
 
   handleLogout(): void {
-    this._router.navigate([''], { replaceUrl: true });
+    this._router.navigate(['login'], { replaceUrl: true });
   }
 
   get username(): string {
