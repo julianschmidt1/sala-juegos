@@ -1,6 +1,6 @@
 @use '../../../styles/colors.scss' as *;
 @use '../../../styles/mixins.scss' as *;
-@use 'sizes.scss' as *;
+@use '../../../styles/sizes.scss' as *;
 
 .screen {
     @include center-content();
@@ -31,6 +31,11 @@
                 animation: rainbowAnimation 3s infinite;
                 border-radius: 4px;
             }
+        }
+
+        small {
+            color: red;
+            padding-bottom: $space-5;
         }
     }
 

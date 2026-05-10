@@ -1,3 +1,5 @@
+<p-toast />
+
 <div class="screen">
     <div class="login-layout">
 
@@ -5,24 +7,77 @@
             <img src="icon-full.svg" alt="GamesRoom Icon">
         </div>
 
-        <div class="credentials">
-            <h1 class="login-title">Registrate</h1>
+        <form class="credentials" [formGroup]="registerForm" (ngSubmit)="handleRegister()">
 
-            <label>Nombre de usuario</label>
-            <input type="text" name="username" autocomplete="off" pInputText [(ngModel)]="username" />
+            <h1 class="login-title">Registro</h1>
 
-            <label>Correo electrónico</label>
-            <input type="text" name="email" autocomplete="off" pInputText [(ngModel)]="email" />
+            <label>Nombre</label>
 
-            <label>Contraseña</label>
-            <input type="password" name="password" pInputText [(ngModel)]="password" />
-            
+            <input type="text" pInputText formControlName="first_name" />
+
+            @if (
+            registerForm.get('first_name')?.touched &&
+            registerForm.get('first_name')?.invalid
+            ) {
+            <small>El nombre es requerido</small>
+            }
+
+            <label>Apellido</label>
+
+            <input type="text" pInputText formControlName="last_name" />
+
+            @if (
+            registerForm.get('last_name')?.touched &&
+            registerForm.get('last_name')?.invalid
+            ) {
+            <small>El apellido es requerido</small>
+            }
+
+            <label>Email</label>
+
+            <input type="email" pInputText formControlName="email" />
+
+            @if (
+            registerForm.get('email')?.touched &&
+            registerForm.get('email')?.invalid
+            ) {
+            <small>Ingresa un email valido</small>
+            }
+
+            <label>Edad</label>
+
+            <input type="number" pInputText formControlName="age" />
+
+            @if (
+            registerForm.get('age')?.touched &&
+            registerForm.get('age')?.invalid
+            ) {
+            <small>Ingresa una edad valida (entre 18 y 99)</small>
+            }
+
+            <label>Clave</label>
+
+            <input type="password" pInputText formControlName="password" />
+
+            @if (
+            registerForm.get('password')?.touched &&
+            registerForm.get('password')?.invalid
+            ) {
+            <small>La clave debe contener por lo menos 6 caracteres</small>
+            }
+
             <div class="action-buttons">
-                <a routerLink="/login" style="margin-right: auto;">¡Ya tengo cuenta!</a>
 
-                <button class="custom-button" (click)="handleRegister()">Crear cuenta</button>
+                <a routerLink="/login" style="margin-right: auto;">
+                    ¡Ya tengo cuenta!
+                </a>
+
+                <button type="submit" class="custom-button" [disabled]="loading()">
+                    Crear cuenta
+                </button>
+
             </div>
-        </div>
 
+        </form>
     </div>
 </div>
