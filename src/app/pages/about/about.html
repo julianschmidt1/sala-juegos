@@ -1,0 +1,78 @@
+<div class="page-content">
+    <div class="about-title">
+        <h3>¿Quién soy?</h3>
+    </div>
+    <div class="about-content">
+
+        <div class="about-img">
+            @if (currentUser) {
+            <img [src]="currentUser.avatar_url" class="user-img" alt="user image">
+            }
+            @if (isLoading()) {
+                Cargando imagen...
+            }
+        </div>
+
+        <div class="about-detail">
+
+            @if (currentUser) {
+            <h2>
+                {{ currentUser.name }}, {{ currentUser.bio }}
+            </h2>
+            <p class="description">
+                Apasionado por la tecnología e informática.
+                Estudiante en la Universidad Tecnológica Nacional (UTN).
+            </p>
+            } @else {
+                Cargando usuario...
+            }
+
+            <div class="extras">
+                <div>
+                    <h2>Hobbies</h2>
+                    <ul>
+                        <li>Gaming</li>
+                        <li>Entrenar</li>
+                        <li>Comer en restaurantes asiáticos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2 class="introduction shiny">
+                Michi Clicker
+            </h2>
+            <p>
+                En <strong>Michi Clicker™</strong> el jugador debe clickear la imagen del gato naranja (😺) para ganar
+                <strong>Michis</strong>.
+                Una vez habiendo recolectado una determinada cantidad de <strong>Michis</strong>, el jugador tendra la
+                posibilidad de
+                comprar <strong>mejoras</strong>.
+                <br>
+                <br>
+                Existen 2 tipos de mejoras
+            </p>
+            <ul>
+                <li><strong>Multiplicadores:</strong> Por defecto el jugador tiene un multiplicador de <strong>1.0 M/C
+                        (Michis por click)</strong>. Al comprar estas mejoras, el valor base se multiplica por el valor
+                    de la mejora.
+                    <br>
+                    Digamos que compramos una mejora que aumente el multiplicador base en 2, entonces nuestro nuevo
+                    multiplicador de M/C seria de 1 * 2.
+                </li>
+                <br>
+                <li><strong>Pasivas:</strong> Las mejoras pasivas permiten al jugador ganar Michis sin tener que
+                    clickear (Como un
+                    verdadero hombre de negocios 😺💸).
+                    Por defecto el jugador tiene un <strong>MPS (Michis por segundo)</strong> de 0. Al comprar
+                    <strong>GATOS
+                        OBREROS</strong>,
+                    incrementaras tu <strong>MPS</strong> por el valor detallado la mejora.
+                </li>
+            </ul>
+            <p>Tene en cuenta que podes comprar muchas mejoras del mismo tipo, por lo que podras lograr valores tanto de
+                MPS como M/C altisimos, convertiendote en un magnate de los <strong>Michis 😼</strong>.
+            </p>
+        </div>
+
+    </div>
+</div>

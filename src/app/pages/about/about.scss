@@ -1,0 +1,75 @@
+@use '../../../styles/colors.scss' as *;
+@use '../../../styles/mixins.scss' as *;
+
+.about-title {
+    @include center-content();
+    color: $text-color-1;
+    font-size: 2rem;
+    min-height: 150px;
+}
+
+.about-content {
+    @include center-content();
+    flex-wrap: wrap;
+    width: 100%;
+
+    .about-img {
+        @include center-content();
+        flex: 1;
+
+        .user-img {
+            border-radius: 50%;
+            max-height: 350px;
+            max-width: 350px;
+            color: $primary-color-1;
+        }
+    }
+
+    .about-detail {
+        flex: 2;
+        justify-content: center;
+        margin: 0 40px;
+        min-width: 200px;
+        color: $text-color-1;
+
+        .diamond {
+            color: $primary-color-1;
+        }
+
+        .introduction {
+            animation: floatAnimation 2s ease infinite alternate;
+        }
+
+        .shiny {
+            color: $shiny-color;
+        }
+
+        strong {
+            color: $shiny-color;
+        }
+
+        .description {
+            text-align: justify;
+            letter-spacing: 1.2px;
+        }
+
+        .extras {
+            @include display-flex();
+            @include justify-content(flex-start);
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+    }
+
+}
+
+
+@keyframes floatAnimation {
+    0% {
+        transform: translateX(0) rotate(-1deg);
+    }
+
+    100% {
+        transform: translateX(10px) rotate(1deg);
+    }
+}
