@@ -1,26 +1,78 @@
+<p-toast />
+
 <div class="screen">
+
     <div class="login-layout">
 
         <div class="logo-container">
             <img src="icon-full.svg" alt="GamesRoom Icon">
         </div>
 
-        <form class="credentials">
-            <h1 class="login-title">Games Room</h1>
+        <form class="credentials" [formGroup]="loginForm" (ngSubmit)="handleLogin()">
+
+            <h1 class="login-title">Iniciar sesión</h1>
 
             <label>Correo electrónico</label>
-            <input type="text" name="email" pInputText autocomplete="off" [(ngModel)]="user.email" />
+
+            <input type="email" pInputText formControlName="email" />
+
+            @if (
+            loginForm.get('email')?.touched &&
+            loginForm.get('email')?.invalid
+            ) {
+            <small>Ingresá un correo válido</small>
+            }
 
             <label>Contraseña</label>
-            <input type="password" name="password" pInputText [(ngModel)]="user.password" />
+
+            <input type="password" pInputText formControlName="password" />
+
+            @if (
+            loginForm.get('password')?.touched &&
+            loginForm.get('password')?.invalid
+            ) {
+            <small>La contraseña es obligatoria</small>
+            }
+
+            <div class="quick-access">
+
+                <button type="button" class="quick-user" (click)="fillQuickAccess(
+                        'test1@mail.com',
+                        'test123'
+                    )">
+                    Usuario 1
+                </button>
+
+                <button type="button" class="quick-user" (click)="fillQuickAccess(
+                        'test2@mail.com',
+                        'test123'
+                    )">
+                    Usuario 2
+                </button>
+
+                <button type="button" class="quick-user" (click)="fillQuickAccess(
+                        'test3@mail.com',
+                        'test123'
+                    )">
+                    Usuario 3
+                </button>
+
+            </div>
 
             <div class="action-buttons">
-                <a routerLink="/register" style="margin-right: auto;">Crear cuenta</a>
 
-                <button class="custom-button admin-effect" (click)="setAdminCredentials()">¡SOY ADMIN!</button>
-                <button class="custom-button" (click)="handleLogin()">Ingresar</button>
+                <a routerLink="/register" style="margin-right: auto;">
+                    Crear cuenta
+                </a>
+
+                <button type="submit" class="custom-button" [disabled]="loading()">
+                    Ingresar
+                </button>
+
             </div>
+
         </form>
 
     </div>
+
 </div>

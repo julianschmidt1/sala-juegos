@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { supabase } from '../../core/supabase/supabase';
+import { AuthService } from '../../core/services/auth';
 
 @Component({
   selector: 'home-screen',
@@ -12,11 +13,17 @@ import { supabase } from '../../core/supabase/supabase';
   styleUrl: './home.scss'
 })
 export class HomeComponent implements OnInit {
+  private _auth = inject(AuthService);
+
   async ngOnInit() {
-    
+
     const { data, error } = await supabase.auth.getSession();
 
     console.log(data);
     console.log(error);
+  }
+
+  get username(): string {
+    return this._auth.username;
   }
 }

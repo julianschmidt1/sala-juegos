@@ -20,12 +20,10 @@ import { AuthService } from '../../core/services/auth';
   styleUrl: './login.scss'
 })
 export class RegisterComponent {
-
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
   private messageService = inject(MessageService);
-
   loading = signal(false);
 
   registerForm = this.fb.group({
@@ -90,7 +88,7 @@ export class RegisterComponent {
 
       this.messageService.add({
         severity: 'error',
-        summary: 'Register error',
+        summary: 'Error',
         detail: message
       });
 

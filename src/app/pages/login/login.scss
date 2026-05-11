@@ -39,6 +39,11 @@
         }
     }
 
+    .quick-access {
+        @include display-flex();
+        gap: 5px;
+    }
+
     .logo-container {
         @include center-content();
         flex: 1;
