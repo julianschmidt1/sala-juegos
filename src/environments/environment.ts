@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
-  supabaseUrl: import.meta.env['VITE_SUPABASE_URL'],
-  supabaseKey: import.meta.env['VITE_SUPABASE_KEY'],
+  supabaseUrl: 'https://chyodkycuzbjtblssmou.supabase.co',
+  supabaseKey: 'sb_publishable__Bul4FTweYExXzMQXjNzEw_9QThwQWQ'
 };
