@@ -1,6 +1,6 @@
 @use '../../../styles/colors.scss' as *;
 @use '../../../styles/mixins.scss' as *;
-@use 'sizes.scss' as *;
+@use '../../../styles/sizes.scss' as *;
 
 .screen {
     @include center-content();
@@ -32,6 +32,16 @@
                 border-radius: 4px;
             }
         }
+
+        small {
+            color: red;
+            padding-bottom: $space-5;
+        }
+    }
+
+    .quick-access {
+        @include display-flex();
+        gap: 5px;
     }
 
     .logo-container {

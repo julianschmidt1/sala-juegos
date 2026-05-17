@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../core/services/auth';
 
 @Component({
   selector: 'home-screen',
@@ -11,4 +12,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: './home.scss'
 })
 export class HomeComponent {
+  private _auth = inject(AuthService);
+
+  get username(): string {
+    return this._auth.username;
+  }
 }

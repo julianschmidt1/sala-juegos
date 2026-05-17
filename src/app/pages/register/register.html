@@ -1,0 +1,83 @@
+<p-toast />
+
+<div class="screen">
+    <div class="login-layout">
+
+        <div class="logo-container">
+            <img src="icon-full.svg" alt="GamesRoom Icon">
+        </div>
+
+        <form class="credentials" [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+
+            <h1 class="login-title">Registro</h1>
+
+            <label>Nombre</label>
+
+            <input type="text" pInputText formControlName="first_name" />
+
+            @if (
+            registerForm.get('first_name')?.touched &&
+            registerForm.get('first_name')?.invalid
+            ) {
+            <small>El nombre es requerido</small>
+            }
+
+            <label>Apellido</label>
+
+            <input type="text" pInputText formControlName="last_name" />
+
+            @if (
+            registerForm.get('last_name')?.touched &&
+            registerForm.get('last_name')?.invalid
+            ) {
+            <small>El apellido es requerido</small>
+            }
+
+            <label>Email</label>
+
+            <input type="email" pInputText formControlName="email" />
+
+            @if (
+            registerForm.get('email')?.touched &&
+            registerForm.get('email')?.invalid
+            ) {
+            <small>Ingresa un email valido</small>
+            }
+
+            <label>Edad</label>
+
+            <input type="number" pInputText formControlName="age" />
+
+            @if (
+            registerForm.get('age')?.touched &&
+            registerForm.get('age')?.invalid
+            ) {
+            <small>Ingresa una edad valida (entre 18 y 99)</small>
+            }
+
+            <label>Clave</label>
+
+            <input type="password" pInputText formControlName="password" />
+
+            @if (
+            registerForm.get('password')?.touched &&
+            registerForm.get('password')?.invalid
+            ) {
+            <small>La clave debe contener por lo menos 6 caracteres</small>
+            }
+
+            <div class="action-buttons">
+
+                <a routerLink="/login" style="margin-right: auto;">
+                    ¡Ya tengo cuenta!
+                </a>
+
+                <button type="submit" class="custom-button" [disabled]="loading()">
+                    Crear cuenta
+                </button>
+
+            </div>
+
+        </form>
+    </div>
+</div>

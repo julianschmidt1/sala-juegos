@@ -9,22 +9,26 @@
             <img [src]="currentUser.avatar_url" class="user-img" alt="user image">
             }
             @if (isLoading()) {
-                Cargando imagen...
+            Cargando imagen...
             }
         </div>
 
         <div class="about-detail">
-
             @if (currentUser) {
-            <h2>
-                {{ currentUser.name }}, {{ currentUser.bio }}
-            </h2>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <h2 class="introduction">👋🏻</h2>
+                <a target="_blank" class="shiny" href="https://www.linkedin.com/in/julian-schmidt-dev/">
+                    <h2>
+                        {{ currentUser.name }}, {{ currentUser.bio }}
+                    </h2>
+                </a>
+            </div>
             <p class="description">
                 Apasionado por la tecnología e informática.
                 Estudiante en la Universidad Tecnológica Nacional (UTN).
             </p>
             } @else {
-                Cargando usuario...
+            Cargando usuario...
             }
 
             <div class="extras">

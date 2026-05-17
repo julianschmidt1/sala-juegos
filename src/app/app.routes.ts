@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
   {
@@ -16,12 +17,13 @@ export const routes: Routes = [
   {
     path: 'register',
     loadComponent: () =>
-      import('./pages/login/register')
+      import('./pages/register/register')
         .then(m => m.RegisterComponent)
   },
   // Privadas
   {
     path: '',
+    canActivate: [authGuard],
     loadComponent: () =>
       import('./layouts/layout/layout')
         .then(m => m.Layout),
@@ -43,6 +45,6 @@ export const routes: Routes = [
   // Default
   {
     path: '**',
-    redirectTo: 'login'
+    redirectTo: '/login'
   }
 ];

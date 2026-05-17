@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { DrawerModule } from 'primeng/drawer';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../core/services/auth';
 
 @Component({
   selector: 'sidebar',
@@ -18,6 +19,7 @@ export class SidebarComponent {
   isVisible = signal(false);
   navigationOptions: SidebarNavigationItem[];
   private _router = inject(Router);
+  private _auth = inject(AuthService);
 
   constructor() {
     this.navigationOptions = [
@@ -27,11 +29,12 @@ export class SidebarComponent {
   }
 
   handleLogout(): void {
+    this._auth.logout();
     this._router.navigate(['login'], { replaceUrl: true });
   }
 
   get username(): string {
-    return 'Usuario logeado';
+    return this._auth.username;
   }
 }
 

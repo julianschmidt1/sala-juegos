@@ -13,6 +13,11 @@
     flex-wrap: wrap;
     width: 100%;
 
+    .about-title {
+        @include display-flex();
+        display: flex;
+    }
+
     .about-img {
         @include center-content();
         flex: 1;
@@ -25,6 +30,10 @@
         }
     }
 
+    .introduction {
+        animation: floatAnimation 2s ease infinite alternate;
+    }
+    
     .about-detail {
         flex: 2;
         justify-content: center;
@@ -36,9 +45,6 @@
             color: $primary-color-1;
         }
 
-        .introduction {
-            animation: floatAnimation 2s ease infinite alternate;
-        }
 
         .shiny {
             color: $shiny-color;

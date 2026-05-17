@@ -27,3 +27,12 @@ En este sprint se incluye:
 - Componente About
 - Sidebar de navegación
 - Configuración de rutas
+
+## Sprint 2
+En este sprint se incluye:
+
+- Funcionalidad Login
+- Funcionalidad Register
+- Perfiles de usuario
+- Guards de ruta
+- Usuarios de inicio de sesion rapido
