@@ -54,8 +54,6 @@ export class AuthService {
   }
 
   async loadProfile(userId: string) {
-    console.log('querying profile');
-
     const { data, error } =
       await supabase
         .from('profiles')
@@ -63,8 +61,6 @@ export class AuthService {
         .eq('id', userId)
         .single();
 
-    console.log(data);
-    console.log(error);
 
     if (error) {
       throw new Error(error.message);
@@ -89,7 +85,7 @@ export class AuthService {
       });
 
     if (authError) {
-      throw new Error(authError.message);
+      throw new Error(authError.code);
     }
 
     const user = authData.user;
@@ -120,28 +116,19 @@ export class AuthService {
   }
 
   async login(email: string, password: string) {
-    console.log('starting login');
-
     const { data, error } =
       await supabase.auth.signInWithPassword({
         email,
         password
       });
-    console.log('after signIn');
 
     if (error) {
-      throw new Error(error.message);
+      throw new Error(error.code);
     }
 
-    console.log('user', data.user);
 
     if (data.user) {
-
-      console.log('loading profile');
-
       await this.loadProfile(data.user.id);
-
-      console.log('profile loaded');
     }
 
     return data.user;
@@ -156,12 +143,6 @@ export class AuthService {
 
     this.currentUser.set(null);
     this.currentProfile.set(null);
-  }
-
-  async getCurrentUser() {
-    const { user } = (await supabase.auth.getUser()).data;
-
-    return user;
   }
 
   get username(): string {

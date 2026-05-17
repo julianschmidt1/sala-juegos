@@ -11,6 +11,7 @@ import { ToastModule } from 'primeng/toast';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageService } from 'primeng/api';
 import { AuthService } from '../../core/services/auth';
+import { ERROR_INVALID_CREDENTIALS } from '../../constants/errorCodes';
 
 
 @Component({
@@ -73,10 +74,11 @@ export class LoginComponent {
       await this.router.navigate(['/home']);
 
     } catch (error: any) {
-      let message = error.message;
-
+      let message = 'Ocurrio un error inesperado.';
+      console.log({error});
+      
       if (
-        message.includes('Invalid login credentials')
+        error?.message?.includes(ERROR_INVALID_CREDENTIALS)
       ) {
         message = 'Correo o contraseña incorrectos';
       }

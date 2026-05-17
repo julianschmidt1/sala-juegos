@@ -12,7 +12,7 @@ export const routes: Routes = [
   {
     path: 'register',
     loadComponent: () =>
-      import('./pages/login/register')
+      import('./pages/register/register')
         .then(m => m.RegisterComponent)
   },
   // Privadas

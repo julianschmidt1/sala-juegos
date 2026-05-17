@@ -5,6 +5,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { Router, RouterLink } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthService } from '../../core/services/auth';
+import { ERROR_USER_ALREADY_EXISTS } from '../../constants/errorCodes';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ import { AuthService } from '../../core/services/auth';
   ],
   providers: [MessageService],
   templateUrl: './register.html',
-  styleUrl: './login.scss'
+  styleUrl: '../login/login.scss'
 })
 export class RegisterComponent {
   private fb = inject(FormBuilder);
@@ -78,10 +79,11 @@ export class RegisterComponent {
 
     } catch (error: any) {
 
-      let message = error.message;
+      let message = 'Ocurrio un error inesperado.';
+      console.log({error});
 
       if (
-        message.includes('User already registered')
+        error?.message?.includes(ERROR_USER_ALREADY_EXISTS)
       ) {
         message = 'El correo ingresado no esta disponible';
       }
