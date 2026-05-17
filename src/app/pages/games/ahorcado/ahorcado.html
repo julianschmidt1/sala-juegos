@@ -1,0 +1,110 @@
+<div class="page-content">
+    <h1 class="title">
+        Ahorcado
+    </h1>
+
+    @if (isPlaying()) {
+        <div class="output-container">
+            <div class="key-word">
+                @for (
+                    letter of wordToReveal().splittedWord;
+                    track letter
+                ) {
+                    <span>
+                        {{ ahorcadoService.getRevealedLetter(letter) }}
+                    </span>
+                }
+            </div>
+            <div class="remaining-tries">
+                Intentos restantes:
+                {{ gameState().triesLeft }}
+            </div>
+        </div>
+
+        <div class="keyboard-container">
+            @for (key of keyboard; track key) {
+                <div
+                    class="key"
+                    (click)="handleSelectKey(key)"
+                    [class]="selectedLetterStyle(key)"
+                >
+                    {{ key }}
+                </div>
+            }
+        </div>
+    }
+
+    @if (showHangman()) {
+        <div class="result">
+            <div class="tries-body-container">
+                <div class="row">
+                    <div>
+                        @if (hangmanParts().head) {
+                            ☠️
+                        }
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>
+                        @if (hangmanParts().leftArm) {
+                            💪🏼
+                        }
+                    </div>
+                    <div>
+                        @if (hangmanParts().torso) {
+                            👕
+                        }
+                    </div>
+                    <div>
+                        @if (hangmanParts().rightArm) {
+                            💪🏼
+                        }
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div>
+                        @if (hangmanParts().leftLeg) {
+                            🦵🏼
+                        }
+                    </div>
+                    <div>
+                        @if (hangmanParts().rightLeg) {
+                            🦵🏼
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="title-container">
+        @if (gameState().victory) {
+            <h1>
+                GANASTE 😎
+            </h1>
+            <h2>
+                Tu palabra es:
+                {{ wordToReveal().fullWord }}
+            </h2>
+        }
+
+        @if (isGameOver()) {
+            <h1>
+                PERDISTE ☠️
+            </h1>
+            <h2>
+                Tu palabra es:
+                {{ wordToReveal().fullWord }}
+            </h2>
+
+        }
+
+        @if (!gameState().inGame) {
+            <h1 (click)="handleStartGame()">
+                COMENZAR PARTIDA
+            </h1>
+        }
+    </div>
+</div>

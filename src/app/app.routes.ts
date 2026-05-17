@@ -40,6 +40,17 @@ export const routes: Routes = [
           import('./pages/about/about')
             .then(m => m.AboutComponent)
       },
+      {
+        path: 'games',
+        children: [
+          {
+            path: 'ahorcado',
+            loadComponent: () =>
+              import('./pages/games/ahorcado/ahorcado')
+                .then(m => m.Ahorcado)
+          },
+        ]
+      },
     ]
   },
   // Default

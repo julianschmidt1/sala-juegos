@@ -1,3 +1,18 @@
 <div class="page-content">
-    <h1 class="title">Bienvenido, {{username}}!</h1>
+    <h1 class="title">
+        Inicio
+    </h1>
+    <div class="games-section">
+        @for (game of gamesList; track game.path) {
+            <div
+                class="game-card"
+                [class]="game.image"
+                (click)="handleGameNavigation(game.path)"
+            >
+                <span>
+                    {{ game.name }}
+                </span>
+            </div>
+        }
+    </div>
 </div>
